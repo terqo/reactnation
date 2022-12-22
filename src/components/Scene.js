@@ -81,20 +81,22 @@ const Scene = () => {
     torus.position.x = 2
 
     //octahedron
-    const textureLoader3 = new THREE.TextureLoader()
-    const map = textureLoader3.load('./grass/basecolor.png')
-    const aoMap = textureLoader3.load('./grass/AO.png')
-    const roughnessMap = textureLoader3.load('./grass/roughness.png')
-    const normalMap = textureLoader3.load('./grass/normal.png')
-    const heightMap = textureLoader3.load('./grass/height.png')
+    const loader = new THREE.TextureLoader()
+    const map = loader.load('./grass/basecolor.png')
+    const aoMap = loader.load('./grass/AO.png')
+    const roughnessMap = loader.load('./grass/roughness.png')
+    const normalMap = loader.load('./grass/normal.png')
+    const heightMap = loader.load('./grass/height.png')
 
-    const geometry3 = new THREE.OctahedronGeometry( 0.65, 2);
+    const geometry3 = new THREE.OctahedronGeometry( 1, 0);
     const material3 = new THREE.MeshStandardMaterial({
       map: map,
       aoMap: aoMap,
       roughnessMap: roughnessMap,
       normalMap: normalMap,
-      displacementMap: heightMap
+      displacementMap: heightMap,
+      displacementScale:0.0,
+   
     });
     const octahedron = new THREE.Mesh( geometry3, material3 );
     scene.add( octahedron );
